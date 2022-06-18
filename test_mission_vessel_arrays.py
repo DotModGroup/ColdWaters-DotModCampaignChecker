@@ -2,7 +2,7 @@ from campaign import Campaign
 from report import Report
 
 
-def test_mission_enemy_vessels(current_campaign: Campaign) -> Report:
+def test_mission_vessel_arrays(current_campaign: Campaign) -> Report:
     report = Report()
     for mission in current_campaign.missions:
         mission_name = mission.name
@@ -21,9 +21,9 @@ def test_mission_enemy_vessels(current_campaign: Campaign) -> Report:
             ):
                 report.errors.append(
                     f"ERROR: Mission {mission_name} has vessel array mismatch:"
-                    + f"\n  Count: {count}"
-                    + f"\n  Behaviors: {behavior}"
-                    + f"\n  Criticality: {importance}"
-                    + f"\n  Vessels: {classes}"
+                    + f"\n    Count: {count}"
+                    + f"\n    Behaviors: {behavior}"
+                    + f"\n    Criticality: {importance}"
+                    + f"\n    Vessels: {classes}"
                 )
     return report
