@@ -4,6 +4,7 @@ from campaigns_parser import campaign_parser
 from write_reports import write_report
 
 # ----------------Test Modules Here----------------------------
+from test_campaign_data_mission_metadata import test_campaign_data_mission_metadata
 from test_mission_vessel_arrays import test_mission_vessel_arrays
 from test_mission_vessel_counts import test_mission_vessel_counts
 
@@ -22,6 +23,7 @@ def main():
 
     current_campaign = campaign_parser(campaign_directory)
 
+    all_reports.append(test_campaign_data_mission_metadata(current_campaign))
     all_reports.append(test_mission_vessel_arrays(current_campaign))
     all_reports.append(test_mission_vessel_counts(current_campaign))
 
