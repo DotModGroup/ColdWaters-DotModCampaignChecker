@@ -1,0 +1,18 @@
+ANNOUNCEMENTS:
+
+REPORTS:
+ERROR: Mission INSERTION_LOCATION_12 has vessel array mismatch:
+  Count: 8
+  Behaviors: 7
+  Criticality: 7
+  Vessels: 7
+ERROR: Mission LANDING_FORCE_2 has vessel array mismatch:
+  Count: 4
+  Behaviors: 5
+  Criticality: 5
+  Vessels: 5
+ERROR: Mission LAND_STRIKE_LOCATION_11 has vessel array mismatch:
+  Count: 10
+  Behaviors: 10
+  Criticality: 10
+  Vessels: 9
