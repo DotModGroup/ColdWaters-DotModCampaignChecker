@@ -22,7 +22,7 @@ def test_mission_vessel_counts(current_campaign: Campaign):
             try:
                 if mission.enemy_units["important"][index] == "TRUE":
                     min_critical_count += int(count[0])
-            except IndexError:
+            except (IndexError, KeyError):
                 pass
 
         if min_vessel_count <= 0:
