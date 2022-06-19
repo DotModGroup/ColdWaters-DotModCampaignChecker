@@ -7,6 +7,9 @@ from write_reports import write_report
 from test_campaign_data_mission_metadata import test_campaign_data_mission_metadata
 from test_mission_vessel_arrays import test_mission_vessel_arrays
 from test_mission_vessel_counts import test_mission_vessel_counts
+from test_mission_vessel_inventory_integrity import (
+    test_mission_vessel_inventory_integrity,
+)
 
 # ----------------End Test Modules-----------------------------
 
@@ -26,6 +29,7 @@ def main():
     all_reports.append(test_campaign_data_mission_metadata(current_campaign))
     all_reports.append(test_mission_vessel_arrays(current_campaign))
     all_reports.append(test_mission_vessel_counts(current_campaign))
+    all_reports.append(test_mission_vessel_inventory_integrity(current_campaign))
 
     write_report(all_reports)
 

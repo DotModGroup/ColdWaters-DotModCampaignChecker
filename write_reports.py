@@ -21,12 +21,12 @@ def write_report(report_list: list[Report]):
         for report in report_list:
             for header in report.header:
                 file.write(f"{header}\n")
-
+            file.write("\n")
             for error in report.errors:
                 file.write(f"{error}\n")
-
+            file.write("\n")
             for warning in report.warnings:
                 file.write(f"{warning}\n")
-
+            file.write("\n")
             for info in report.infos:
                 file.write(f"{info}\n")

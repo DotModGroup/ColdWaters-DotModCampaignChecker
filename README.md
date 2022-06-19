@@ -6,6 +6,8 @@ This is a "static checker" (like MyPy for Python) and is designed to be run cold
 - All vessel arrays in campaign missions are the same length. 
 - Maximum and minimum vessles in missions, as well as critical vessels. 
 - Player and AI mission metadata, including frequency sums. 
+- Vessels provided in mission files exist in vessel_inventory
 
 ## Changelog
-- v0.01: First three checks
+1. v0.01: First three checks
+2. v0.02: Added vessel name integrity check
