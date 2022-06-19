@@ -9,5 +9,5 @@ This is a "static checker" (like MyPy for Python) and is designed to be run cold
 - Vessels provided in mission files exist in vessel_inventory
 
 ## Changelog
-1. v0.01: First three checks
-2. v0.02: Added vessel name integrity check
+- v0.01: First three checks
+- v0.02: Added vessel name integrity check
