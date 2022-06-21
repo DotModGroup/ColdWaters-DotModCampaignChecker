@@ -3,6 +3,8 @@ class CampaignData:
         with open(
             f"{campaign_directory}\\campaign_data.txt", mode="r", encoding="utf-8"
         ) as campaign_data:
+            self.events: list[str] = []
+            self.special_events: dict[str, str] = {}
             self.ai_missions: list[str] = []
             self.player_missions: list[str] = []
             self.ai_mission_data: dict[str, list[str]] = {}
@@ -41,3 +43,8 @@ class CampaignData:
 
                 if line.startswith("Non-PlayerMission="):
                     self.ai_missions.append(line[:-1].split("=")[1])
+
+                if line.startswith("Event="):
+                    if len(split := line[:-1].split("=")) == 3:
+                        self.special_events[split[2]] = split[1]
+                    self.events.append(line[:-1].split("=")[1])

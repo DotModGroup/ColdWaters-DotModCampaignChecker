@@ -4,19 +4,32 @@ from report import Report
 
 def test_campaign_data_mission_metadata(current_campaign: Campaign) -> Report:
     report = Report()
-    if not (
-        (len(current_campaign.campaign_data.player_mission_data["types"]) - 2)
-        == len(current_campaign.campaign_data.player_mission_data["frequencies"])
-        == len(current_campaign.campaign_data.player_mission_data["thresholds"])
-        == len(current_campaign.campaign_data.player_mission_data["counts"])
-    ):
-        report.errors.append(
-            "ERROR: Mismatch in Player Mission Metadata:"
-            + f"\nTypes: {len(current_campaign.campaign_data.player_mission_data['types'])}"
-            + f"\nFrequencies: {len(current_campaign.campaign_data.player_mission_data['frequencies'])}"
-            + f"\nThresholds: {len(current_campaign.campaign_data.player_mission_data['thresholds'])}"
-            + f"\nCounts: {len(current_campaign.campaign_data.player_mission_data['counts'])}"
-        )
+    try:
+        if not (
+            (len(current_campaign.campaign_data.player_mission_data["types"]) - 2)
+            == len(current_campaign.campaign_data.player_mission_data["frequencies"])
+            == len(current_campaign.campaign_data.player_mission_data["thresholds"])
+            == len(current_campaign.campaign_data.player_mission_data["counts"])
+        ):
+            report.errors.append(
+                "ERROR: Mismatch in Player Mission Metadata:"
+                + f"\nTypes: {len(current_campaign.campaign_data.player_mission_data['types'])}"
+                + f"\nFrequencies: {len(current_campaign.campaign_data.player_mission_data['frequencies'])}"
+                + f"\nThresholds: {len(current_campaign.campaign_data.player_mission_data['thresholds'])}"
+                + f"\nCounts: {len(current_campaign.campaign_data.player_mission_data['counts'])}"
+            )
+    except KeyError:
+        if not (
+            (len(current_campaign.campaign_data.player_mission_data["types"]) - 2)
+            == len(current_campaign.campaign_data.player_mission_data["frequencies"])
+            == len(current_campaign.campaign_data.player_mission_data["thresholds"])
+        ):
+            report.errors.append(
+                "ERROR: Mismatch in Player Mission Metadata:"
+                + f"\nTypes: {len(current_campaign.campaign_data.player_mission_data['types'])}"
+                + f"\nFrequencies: {len(current_campaign.campaign_data.player_mission_data['frequencies'])}"
+                + f"\nThresholds: {len(current_campaign.campaign_data.player_mission_data['thresholds'])}"
+            )
     if (
         abs(
             total := sum(

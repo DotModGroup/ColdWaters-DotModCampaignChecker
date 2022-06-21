@@ -56,10 +56,12 @@ class Mission:
                 self.enemy_units["important"] = line[:-1].split("=")[1].split(",")
 
             if line.startswith("EnemyShipClasses"):
-                self.enemy_units["classes"] = line[:-1].split("=")[1].split(",")
+                self.enemy_units["classes"] = (
+                    line.removesuffix("\n").split("=")[1].split(",")
+                )
 
             if line.startswith("EventWin="):
                 self.events["win"] = line[:-1].split("=")[1]
 
             if line.startswith("EventFail="):
-                self.events["win"] = line[:-1].split("=")[1]
+                self.events["fail"] = line.split("=")[1].removesuffix("\n")

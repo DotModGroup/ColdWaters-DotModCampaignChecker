@@ -24,11 +24,11 @@ def test_mission_vessel_inventory_integrity(current_campaign: Campaign) -> Repor
                                 == 0
                                 and len(vessel_role.split("|")) == 1
                             ):
-                                report.warnings.append(
-                                    f"WARNING: In mission {mission_name} critical vessel {vessel} "
-                                    "has no units availible."
+                                report.infos.append(
+                                    f"INFO: In mission {mission_name} critical vessel {vessel} "
+                                    "has no units availible and so this mission cannot appear."
                                 )
-        except KeyError:
+        except (KeyError, IndexError):
             continue
         for vessel in all_vessels:
             if (
