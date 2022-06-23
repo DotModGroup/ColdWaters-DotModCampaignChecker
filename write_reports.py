@@ -21,7 +21,7 @@ def write_report(report_list: list[Report]):
         None
     """
     with open(
-        f"{os.path.dirname(os.path.abspath(__file__))}\\reports.txt",
+        f"{os.getcwd()}\\reports.txt",
         mode="w",
         encoding="utf-8",
     ) as file:
@@ -44,8 +44,6 @@ def write_report(report_list: list[Report]):
 
         # Write each level separately
         file.write("REPORTS:\n")
-        for header in final_report.header:
-            file.write(f"{header}\n")
         file.write("\n")
         for error in final_report.errors:
             file.write(f"{error}\n")

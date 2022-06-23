@@ -54,15 +54,12 @@ def main():
     Returns:
         None
     """
-    CURRENT_LANGUAGE = "en"
     campaign_number = int(input("Select campaign number to check: "))
-    campaign_directory = (
-        f"{os.path.dirname(os.path.abspath(__file__))}"
-        + f"\\campaign\\campaign{campaign_number:03}"
-    )
+    current_language = input("Input two character language code: ")
+    campaign_directory = f"{os.getcwd()}" + f"\\campaign\\campaign{campaign_number:03}"
     all_reports: list[Report] = []
 
-    current_campaign = campaign_parser(campaign_directory, CURRENT_LANGUAGE)
+    current_campaign = campaign_parser(campaign_directory, current_language)
 
     all_reports.append(test_campaign_data_mission_metadata(current_campaign))
     all_reports.append(test_campaign_data_mission_integrity(current_campaign))
