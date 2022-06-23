@@ -13,9 +13,11 @@ This is a "static checker" (like MyPy for Python) and is designed to be run cold
 - All missions match a type specified in campaign_data
 - All missions specified in campaign_data have a file
 - All missions in the campaign are specified in campaign_data
+- All missions have associated language files
 
 ## Changelog
 - v0.01: First three checks
 - v0.02: Added vessel name integrity check
 - v0.03: Added several new checks and fixed a few bugs for non-DotMod campaigns
 - v0.04: Added documentation, and made some reports clearer
+- v0.05: Added a new check, refactored events and language info, and fixed whitespace in docs

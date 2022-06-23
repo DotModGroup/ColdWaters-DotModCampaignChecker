@@ -24,7 +24,9 @@ def test_mission_events(current_campaign: Campaign):
 
     for mission in current_campaign.missions:
         try:
-            if (win := mission.events["win"]) not in current_campaign.events.events:
+            if (
+                win := mission.events["win"]
+            ) not in current_campaign.language_info.events.events:
                 report.errors.append(
                     f'ERROR: Mission {mission.name} calls for missing win event "{win}".'
                 )
@@ -32,7 +34,9 @@ def test_mission_events(current_campaign: Campaign):
             continue
 
         try:
-            if (fail := mission.events["fail"]) not in current_campaign.events.events:
+            if (
+                fail := mission.events["fail"]
+            ) not in current_campaign.language_info.events.events:
                 report.errors.append(
                     f'ERROR: Mission {mission.name} calls for missing fail event "{fail}".'
                 )

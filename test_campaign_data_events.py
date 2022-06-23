@@ -43,7 +43,7 @@ def test_campaign_data_events(current_campaign: Campaign) -> Report:
     ]
 
     for event in current_campaign.campaign_data.events:
-        if event not in current_campaign.events.events:
+        if event not in current_campaign.language_info.events.events:
             report.errors.append(
                 f"ERROR: Event {event} found in campaign_data but not present in language files!"
             )

@@ -40,6 +40,7 @@ def write_report(report_list: list[Report]):
         file.write("ANNOUNCEMENTS:\n")
         for announcement in final_report.announcements:
             file.write(f"{announcement}\n")
+        file.write("\n")
 
         # Write each level separately
         file.write("REPORTS:\n")

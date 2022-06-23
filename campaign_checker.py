@@ -4,16 +4,17 @@ Imports From:
     os
     campaigns_parser.py
     report.py
-    write_reports.py
+    test_campaign_mission_types.py
+    test_campaign_data_mission_integrity.py
     test_campaign_data_mission_metadata.py
+    test_campaign_data_events.py
     test_mission_vessel_arrays.py
     test_mission_vessel_counts.py
     test_mission_vessel_inventory_integrity.py
-    test_campaign_data_events.py
     test_mission_events.py
-    test_campaign_mission_types.py
-    test_campaign_data_mission_integrity.py
-    
+    test_mission_language_files.py
+    write_reports.py
+
 Functions:
     main()
 """
@@ -34,6 +35,7 @@ from test_campaign_data_events import test_campaign_data_events
 from test_mission_events import test_mission_events
 from test_campaign_mission_types import test_campaign_mission_types
 from test_campaign_data_mission_integrity import test_campaign_data_mission_integrity
+from test_mission_language_files import test_mission_language_files
 
 # ----------------End Test Modules-----------------------------
 
@@ -70,6 +72,7 @@ def main():
     all_reports.append(test_mission_vessel_counts(current_campaign))
     all_reports.append(test_mission_vessel_inventory_integrity(current_campaign))
     all_reports.append(test_mission_events(current_campaign))
+    all_reports.append(test_mission_language_files(current_campaign))
 
     write_report(all_reports)
 
