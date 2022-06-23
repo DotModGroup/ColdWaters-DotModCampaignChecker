@@ -55,6 +55,7 @@ def test_mission_vessel_counts(current_campaign: Campaign):
         if (
             min_critical_count <= 0
             and mission_name in current_campaign.campaign_data.player_missions
+            and "testship" not in mission.enemy_units["classes"]
         ):
             report.warnings.append(
                 f"WARNING: Mission {mission_name} has a minmum "

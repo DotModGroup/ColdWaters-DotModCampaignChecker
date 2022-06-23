@@ -24,7 +24,7 @@ def test_mission_vessel_inventory_integrity(current_campaign: Campaign) -> Repor
 
     for mission in current_campaign.missions:
         mission_name = mission.name
-        all_vessels = []
+        all_vessels: list[str] = []
         try:
             for index, vessel_role in enumerate(mission.enemy_units["classes"]):
                 for vessel in vessel_role.split("|"):
@@ -51,6 +51,7 @@ def test_mission_vessel_inventory_integrity(current_campaign: Campaign) -> Repor
             if (
                 vessel not in current_campaign.vessel_inventory.vessel_inventory.keys()
                 and vessel not in current_campaign.vessel_inventory.selectors.keys()
+                and vessel != "testship"
             ):
                 report.warnings.append(
                     f"WARNING: Mission {mission_name} has vessel {vessel}, "

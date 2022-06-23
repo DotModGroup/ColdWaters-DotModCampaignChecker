@@ -21,7 +21,9 @@ This is a "static checker" (like MyPy for Python) and is designed to be run cold
 - v0.03: Added several new checks and fixed a few bugs for non-DotMod campaigns
 - v0.04: Added documentation, and made some reports clearer
 - v0.05: Added a new check, refactored events and language info, and fixed whitespace in docs
-- v0.06: Added .ico for release .exe, and refactored to work as a .exe 
+- v0.06: Added .ico for release .exe, and refactored to work as a .exe
+- v0.10: First release, identical to v0.06
+- v0.11: Added small tweaks regarding the use of testship to indicate a location-based mission
 
 ### How to Use
 1. Download the latest release from the "Releases" tab on Discord. This should be a .zip containing the .exe itself.

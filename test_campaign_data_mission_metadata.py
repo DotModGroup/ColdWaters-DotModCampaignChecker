@@ -30,10 +30,10 @@ def test_campaign_data_mission_metadata(current_campaign: Campaign) -> Report:
         ):
             report.errors.append(
                 "ERROR: Mismatch in Player Mission Metadata:"
-                + f"\nTypes (+2): {len(current_campaign.campaign_data.player_mission_data['types'])}"
-                + f"\nFrequencies: {len(current_campaign.campaign_data.player_mission_data['frequencies'])}"
-                + f"\nThresholds: {len(current_campaign.campaign_data.player_mission_data['thresholds'])}"
-                + f"\nCounts: {len(current_campaign.campaign_data.player_mission_data['counts'])}"
+                + f"\n    Types (+2): {len(current_campaign.campaign_data.player_mission_data['types'])}"
+                + f"\n    Frequencies: {len(current_campaign.campaign_data.player_mission_data['frequencies'])}"
+                + f"\n    Thresholds: {len(current_campaign.campaign_data.player_mission_data['thresholds'])}"
+                + f"\n    Counts: {len(current_campaign.campaign_data.player_mission_data['counts'])}"
             )
     except KeyError:
         if not (
