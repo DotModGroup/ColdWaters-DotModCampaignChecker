@@ -1,7 +1,24 @@
+"""This file holds the Events class, which holds all of the events at once.
+
+Imports From:
+    os
+    
+Classes:
+    Events
+"""
 import os
 
 
 class Events:
+    """This class stores all events from a single campaign
+
+    Attributes:
+        events: list[str] = [] | List of all events as pilled from the files
+
+    Methods:
+        None
+    """
+
     def __init__(self, campaign_directory: str, current_language: str):
         event_file_directory = (
             f"{campaign_directory}\\language_{current_language}\\events"

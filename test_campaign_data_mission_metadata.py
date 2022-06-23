@@ -1,8 +1,25 @@
+"""This file contains tests for the metadata for missions provided in campaign_data
+
+Imports From:
+    campaign.py
+    report.py
+
+Functions:
+    test_campaign_data_mission_metadata()
+"""
 from campaign import Campaign
 from report import Report
 
 
 def test_campaign_data_mission_metadata(current_campaign: Campaign) -> Report:
+    """Test the mission metadata for errors like mismatched array lenghts
+
+    Parameters:
+        current_campaign: Campaign | The parsed campaign to be tested
+
+    Returns:
+        Report | The completed Report to be returned
+    """
     report = Report()
     try:
         if not (
@@ -13,7 +30,7 @@ def test_campaign_data_mission_metadata(current_campaign: Campaign) -> Report:
         ):
             report.errors.append(
                 "ERROR: Mismatch in Player Mission Metadata:"
-                + f"\nTypes: {len(current_campaign.campaign_data.player_mission_data['types'])}"
+                + f"\nTypes (+2): {len(current_campaign.campaign_data.player_mission_data['types'])}"
                 + f"\nFrequencies: {len(current_campaign.campaign_data.player_mission_data['frequencies'])}"
                 + f"\nThresholds: {len(current_campaign.campaign_data.player_mission_data['thresholds'])}"
                 + f"\nCounts: {len(current_campaign.campaign_data.player_mission_data['counts'])}"

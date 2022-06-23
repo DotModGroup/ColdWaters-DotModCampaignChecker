@@ -1,8 +1,25 @@
+"""This file contains tests for the provided lists of missions against the provided files
+
+Imports From:
+    campaign.py
+    report.py
+
+Functions:
+    test_campaign_data_mission_integrity()
+"""
 from campaign import Campaign
 from report import Report
 
 
 def test_campaign_data_mission_integrity(current_campaign: Campaign) -> Report:
+    """Test all missions for presence in the campaign_data lists and file presence
+
+    Parameters:
+        current_campaign: Campaign | The parsed campaign to be tested
+
+    Returns:
+        Report | The completed Report to be returned
+    """
     report = Report()
 
     for mission_file in current_campaign.missions:

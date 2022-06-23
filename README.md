@@ -18,3 +18,4 @@ This is a "static checker" (like MyPy for Python) and is designed to be run cold
 - v0.01: First three checks
 - v0.02: Added vessel name integrity check
 - v0.03: Added several new checks and fixed a few bugs for non-DotMod campaigns
+- v0.04: Added documentation, and made some reports clearer

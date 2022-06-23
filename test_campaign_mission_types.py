@@ -1,8 +1,25 @@
+"""This file contains tests for the mission types of mission files
+
+Imports From:
+    campaign.py
+    report.py
+
+Functions:
+    test_campaign_mission_types()
+"""
 from campaign import Campaign
 from report import Report
 
 
 def test_campaign_mission_types(current_campaign: Campaign) -> Report:
+    """Test each mission to ensure that mission types are correct, in filename and file entry
+
+    Parameters:
+        current_campaign: Campaign | The parsed campaign to be tested
+
+    Returns:
+        Report | The completed Report to be returned
+    """
     report = Report()
     for mission in current_campaign.missions:
         try:

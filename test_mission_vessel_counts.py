@@ -1,8 +1,25 @@
+"""This file contains tests for vessel counts found in mission files
+
+Imports From:
+    campaign.py
+    report.py
+
+Functions:
+    test_mission_vessel_counts()
+"""
 from campaign import Campaign
 from report import Report
 
 
 def test_mission_vessel_counts(current_campaign: Campaign):
+    """Test the vessel counts in mission files for too many or too few vessels
+
+    Parameters:
+        current_campaign: Campaign | The parsed campaign to be tested
+
+    Returns:
+        Report | The completed Report to be returned
+    """
     report = Report()
     for mission in current_campaign.missions:
         mission_name = mission.name

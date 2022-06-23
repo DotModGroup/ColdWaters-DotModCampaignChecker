@@ -1,8 +1,25 @@
+"""This file contains tests to compare all vessels found in mission files to the vessel inventories
+
+Imports From:
+    campaign.py
+    report.py
+
+Functions:
+    test_mission_vessel_inventory_integrity()
+"""
 from campaign import Campaign
 from report import Report
 
 
 def test_mission_vessel_inventory_integrity(current_campaign: Campaign) -> Report:
+    """Test the vessels found in a mission for incorrect vessels and selectors
+
+    Parameters:
+        current_campaign: Campaign | The parsed campaign to be tested
+
+    Returns:
+        Report | The completed Report to be returned
+    """
     report = Report()
 
     for mission in current_campaign.missions:

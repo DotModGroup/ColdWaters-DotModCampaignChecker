@@ -1,8 +1,25 @@
+"""This file writes a list of reports to a text file.
+
+Imports From:
+    campaign.py
+    report.py
+
+Functions:
+    write_report()
+"""
 import os
 from report import Report
 
 
 def write_report(report_list: list[Report]):
+    """Write a list of Reports to disk in a human-readable format
+
+    Parameters:
+        report_list: list[Report] | A list of reports to write to disk
+
+    Returns:
+        None
+    """
     with open(
         f"{os.path.dirname(os.path.abspath(__file__))}\\reports.txt",
         mode="w",
