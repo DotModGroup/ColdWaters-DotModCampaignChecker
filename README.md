@@ -34,7 +34,7 @@ This is a "static checker" (like MyPy for Python) and is designed to be run cold
 6. Perform corrections on campaign based on reports.
 
 ### How to Contribute
-I'm always looking for contributors on this project! The main things I ask when contributing is that A) you document all files you commit in a style similar to the one used throughout the rest of this project (or DM me on Discord for ny little styleguide which I use for myself), and B) try to keep the code style similar to that which is presented thusfar in this project. I reserve the right to reject any PR which I feel uses a dramatically different code style. Always feel free to fork, of course, if you dislike how this project is written.
+I'm always looking for contributors on this project! The main things I ask when contributing is that A) you document all files you commit in a style similar to the one used throughout the rest of this project (or DM me on Discord for my little styleguide which I use for myself), and B) try to keep the code style similar to that which is presented thusfar in this project. I reserve the right to reject any PR which I feel uses a dramatically different code style. Always feel free to fork, of course, if you dislike how this project is written.
 
 ### How to Compile
 If you wish to compile this project from the raw source code, simply pip install nuitka and enter the following command:
