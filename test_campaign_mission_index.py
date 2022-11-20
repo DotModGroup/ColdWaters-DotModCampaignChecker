@@ -27,7 +27,7 @@ def test_campaign_mission_index(current_campaign: Campaign) -> Report:
             if mission.type not in mission_types:
                 mission_types[mission.type] = []
                 mission_types[mission.type].append(int(mission.name.split("_")[-1]))
-        except AttributeError:
+        except (AttributeError, ValueError):
             continue
 
     for mission_type, missions in mission_types.items():
