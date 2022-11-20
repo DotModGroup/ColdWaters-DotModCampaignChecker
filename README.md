@@ -14,6 +14,8 @@ This is a "static checker" (like MyPy for Python) and is designed to be run cold
 - All missions specified in campaign_data have a file
 - All missions in the campaign are specified in campaign_data
 - All missions have associated language files
+- All mission types are only constructed of letters and not numbers
+- All missions are properly 0-indexed
 
 ## Changelog
 - v0.01: First three checks
@@ -24,12 +26,13 @@ This is a "static checker" (like MyPy for Python) and is designed to be run cold
 - v0.06: Added .ico for release .exe, and refactored to work as a .exe
 - v0.10: First release, identical to v0.06
 - v0.1.1: Added small tweaks regarding the use of testship to indicate a location-based mission
+- v0.1.2: Added two new checks regarding mission types
 
 ### How to Use
 1. Download the latest release from the "Releases" tab on Discord. This should be a .zip containing the .exe itself.
 2. Extract the .exe from the downloaded .zip to dotmod, override, or priority, in whichever one your campaign sits.
 3. Run the .exe by double-clicking on it.
-4. Enter just the numeral part of the campaign's number (006 would be just 6), and then enter a two letter langauge code, such as _en or _ru.
+4. Enter just the numeral part of the campaign's number (006 would be just 6), and then enter a two letter langauge code, such as en or ru.
 5. Wait for the program to finish (this should never take longer than a second) and open reports.txt.
 6. Perform corrections on campaign based on reports.
 
