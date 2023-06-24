@@ -13,7 +13,7 @@ class Events:
     """This class stores all events from a single campaign
 
     Attributes:
-        events: list[str] = [] | List of all events as pilled from the files
+        events: list[str] = [] | List of all events as pulled from the files
 
     Methods:
         None

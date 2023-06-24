@@ -30,6 +30,23 @@ def test_mission_vessel_arrays(current_campaign: Campaign) -> Report:
                 importance = len(mission.enemy_units["important"])
                 classes = len(mission.enemy_units["classes"])
             except KeyError:
+                if "RETURN_TO_BASE" not in mission_name:
+                    if "count" not in mission.enemy_units.keys():
+                        report.errors.append(
+                            f"ERROR: Mission {mission_name} missing NumberOfEnemyUnits."
+                        )
+                    if "behavior" not in mission.enemy_units.keys():
+                        report.errors.append(
+                            f"ERROR: Mission {mission_name} missing CombatBehavior."
+                        )
+                    if "important" not in mission.enemy_units.keys():
+                        report.errors.append(
+                            f"ERROR: Mission {mission_name} missing EnemyUnitMissionCritical."
+                        )
+                    if "classes" not in mission.enemy_units.keys():
+                        report.errors.append(
+                            f"ERROR: Mission {mission_name} missing EnemyShipClasses."
+                        )
                 continue
             if not (
                 (count == behavior)

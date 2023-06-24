@@ -4,10 +4,13 @@ Imports From:
     os
     campaigns_parser.py
     report.py
+    test_award_event_files.py
+    test_campaign_data_events.py
     test_campaign_mission_types.py
     test_campaign_data_mission_integrity.py
     test_campaign_data_mission_metadata.py
-    test_campaign_data_events.py
+    test_campaign_data_mission_types.py
+    test_campaign_mission_index.py
     test_mission_vessel_arrays.py
     test_mission_vessel_counts.py
     test_mission_vessel_inventory_integrity.py
@@ -25,6 +28,7 @@ from report import Report
 from write_reports import write_report
 
 # ----------------Test Modules Here----------------------------
+from test_award_event_files import test_award_event_files
 from test_campaign_data_mission_metadata import test_campaign_data_mission_metadata
 from test_mission_vessel_arrays import test_mission_vessel_arrays
 from test_mission_vessel_counts import test_mission_vessel_counts
@@ -36,6 +40,8 @@ from test_mission_events import test_mission_events
 from test_campaign_mission_types import test_campaign_mission_types
 from test_campaign_data_mission_integrity import test_campaign_data_mission_integrity
 from test_mission_language_files import test_mission_language_files
+from test_campaign_mission_index import test_campaign_mission_index
+from test_campaign_data_mission_types import test_campaign_data_mission_types
 
 # ----------------End Test Modules-----------------------------
 
@@ -61,15 +67,18 @@ def main():
 
     current_campaign = campaign_parser(campaign_directory, current_language)
 
+    all_reports.append(test_award_event_files(current_campaign))
     all_reports.append(test_campaign_data_mission_metadata(current_campaign))
     all_reports.append(test_campaign_data_mission_integrity(current_campaign))
     all_reports.append(test_campaign_mission_types(current_campaign))
+    all_reports.append(test_campaign_mission_index(current_campaign))
     all_reports.append(test_campaign_data_events(current_campaign))
     all_reports.append(test_mission_vessel_arrays(current_campaign))
     all_reports.append(test_mission_vessel_counts(current_campaign))
     all_reports.append(test_mission_vessel_inventory_integrity(current_campaign))
     all_reports.append(test_mission_events(current_campaign))
     all_reports.append(test_mission_language_files(current_campaign))
+    all_reports.append(test_campaign_data_mission_types(current_campaign))
 
     write_report(all_reports)
 
