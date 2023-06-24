@@ -16,6 +16,7 @@ This is a "static checker" (like MyPy for Python) and is designed to be run cold
 - All missions have associated language files
 - All mission types are only constructed of letters and not numbers
 - All missions are properly 0-indexed
+- All awards in awards.txt are present in event file form
 
 ## Changelog
 - v0.01: First three checks
@@ -27,6 +28,7 @@ This is a "static checker" (like MyPy for Python) and is designed to be run cold
 - v0.10: First release, identical to v0.06
 - v0.1.1: Added small tweaks regarding the use of testship to indicate a location-based mission
 - v0.1.2: Added two new checks regarding mission types
+- v0.1.3: Added one new check for award event names
 
 ### How to Use
 1. Download the latest release from the "Releases" tab on Discord. This should be a .zip containing the .exe itself.
