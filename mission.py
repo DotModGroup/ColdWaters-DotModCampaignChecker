@@ -94,10 +94,13 @@ class Mission:
             if line.startswith("EnemyUnitMissionCritical="):
                 self.enemy_units["important"] = line[:-1].split("=")[1].split(",")
 
-            if line.startswith("EnemyShipClasses"):
-                self.enemy_units["classes"] = (
-                    line.removesuffix("\n").split("=")[1].split(",")
-                )
+            if line.startswith("EnemyShipClasses="):
+                try:
+                    self.enemy_units["classes"] = (
+                        line.removesuffix("\n").split("=")[1].split(",")
+                    )
+                except IndexError:
+                    self.enemy_units["classes"] = []
 
             if line.startswith("EventWin="):
                 self.events["win"] = line[:-1].split("=")[1]

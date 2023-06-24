@@ -4,6 +4,7 @@ Imports From:
     os
     campaigns_parser.py
     report.py
+    test_award_event_files.py
     test_campaign_data_events.py
     test_campaign_mission_types.py
     test_campaign_data_mission_integrity.py
@@ -27,6 +28,7 @@ from report import Report
 from write_reports import write_report
 
 # ----------------Test Modules Here----------------------------
+from test_award_event_files import test_award_event_files
 from test_campaign_data_mission_metadata import test_campaign_data_mission_metadata
 from test_mission_vessel_arrays import test_mission_vessel_arrays
 from test_mission_vessel_counts import test_mission_vessel_counts
@@ -65,6 +67,7 @@ def main():
 
     current_campaign = campaign_parser(campaign_directory, current_language)
 
+    all_reports.append(test_award_event_files(current_campaign))
     all_reports.append(test_campaign_data_mission_metadata(current_campaign))
     all_reports.append(test_campaign_data_mission_integrity(current_campaign))
     all_reports.append(test_campaign_mission_types(current_campaign))

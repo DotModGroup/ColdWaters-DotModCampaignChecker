@@ -1,6 +1,7 @@
 """This file contains tests to ensure all required regular and special events exist
 
 Imports From:
+    awards.py
     campaign_data.py
     language_info.py
     mission.py
@@ -9,6 +10,7 @@ Imports From:
 Classes:
     Campaign
 """
+from awards import Awards
 from mission import Mission
 from campaign_data import CampaignData
 from vessel_inventory import VesselInventory
@@ -30,11 +32,13 @@ class Campaign:
 
     def __init__(
         self,
+        awards: Awards,
         missions: list[Mission],
         campaign_data: CampaignData,
         vessel_inventory: VesselInventory,
         language_info: LangaugeInfo,
     ):
+        self.awards = awards
         self.missions = missions
         self.campaign_data = campaign_data
         self.vessel_inventory = vessel_inventory
