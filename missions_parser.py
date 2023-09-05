@@ -1,4 +1,5 @@
-"""This file contains the code used to parse more than one mission and give it back to a campaign
+"""This file contains the code used to parse the 
+whole mission directory and give it back to a campaign
 
 Imports From:
     os

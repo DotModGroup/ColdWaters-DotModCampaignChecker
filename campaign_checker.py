@@ -6,11 +6,14 @@ Imports From:
     report.py
     test_award_event_files.py
     test_campaign_data_events.py
-    test_campaign_mission_types.py
+    test_campaign_data_airbase_aircraft_types.py
     test_campaign_data_mission_integrity.py
     test_campaign_data_mission_metadata.py
     test_campaign_data_mission_types.py
+    test_campaign_data_sosus_lines.py
+    test_campaign_data_special_mission_types
     test_campaign_mission_index.py
+    test_campaign_mission_types.py
     test_mission_vessel_arrays.py
     test_mission_vessel_counts.py
     test_mission_vessel_inventory_integrity.py
@@ -42,6 +45,14 @@ from test_campaign_data_mission_integrity import test_campaign_data_mission_inte
 from test_mission_language_files import test_mission_language_files
 from test_campaign_mission_index import test_campaign_mission_index
 from test_campaign_data_mission_types import test_campaign_data_mission_types
+from test_campaign_data_special_mission_types import (
+    test_campaign_data_special_mission_types,
+)
+
+from test_campaign_data_airbase_aircraft_types import (
+    test_campaign_data_airbase_aircraft_types,
+)
+from test_campaign_data_sosus_lines import test_campaign_data_sosus_lines
 
 # ----------------End Test Modules-----------------------------
 
@@ -79,6 +90,9 @@ def main():
     all_reports.append(test_mission_events(current_campaign))
     all_reports.append(test_mission_language_files(current_campaign))
     all_reports.append(test_campaign_data_mission_types(current_campaign))
+    all_reports.append(test_campaign_data_special_mission_types(current_campaign))
+    all_reports.append(test_campaign_data_airbase_aircraft_types(current_campaign))
+    all_reports.append(test_campaign_data_sosus_lines(current_campaign))
 
     write_report(all_reports)
 
