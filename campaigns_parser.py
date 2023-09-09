@@ -6,6 +6,7 @@ Imports From:
     language_info.py
     mission.py
     missions_parser.py
+    summary.py
     vessel_inventory.py
 
 Functions:
@@ -18,6 +19,7 @@ from mission import Mission
 from missions_parser import mission_parser
 from vessel_inventory import VesselInventory
 from language_info import LangaugeInfo
+from summary import Summary
 
 
 # This file will run each parser and collect the data
@@ -37,6 +39,7 @@ def campaign_parser(campaign_directory: str, current_language: str) -> Campaign:
     campaign_data: CampaignData = CampaignData(campaign_directory)
     vessel_inventory: VesselInventory = VesselInventory(campaign_directory)
     language_info: LangaugeInfo = LangaugeInfo(campaign_directory, current_language)
+    summary: Summary = Summary(campaign_directory)
     return Campaign(
-        awards, mission_list, campaign_data, vessel_inventory, language_info
+        awards, mission_list, campaign_data, vessel_inventory, language_info, summary
     )

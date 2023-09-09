@@ -25,6 +25,14 @@ def test_mission_vessel_inventory_integrity(current_campaign: Campaign) -> Repor
     for mission in current_campaign.missions:
         mission_name = mission.name
         all_vessels: list[str] = []
+        if (
+            not current_campaign.vessel_inventory.vessel_inventory
+            and not current_campaign.vessel_inventory.selectors
+        ):
+            report.announcements.append(
+                "ANNOUNCEMENT: Vessel inventory not loaded. Skipping vessel name integrity checks."
+            )
+            return report
         try:
             for index, vessel_role in enumerate(mission.enemy_units["classes"]):
                 for vessel in vessel_role.split("|"):

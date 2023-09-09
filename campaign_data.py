@@ -11,6 +11,7 @@ Imports From:
 Classes:
     Mission
 """
+
 from aircraft import Aircraft
 from aircraft_parser import aircraft_parser
 from location import Location
@@ -44,70 +45,80 @@ class CampaignData:
     """
 
     def __init__(self, campaign_directory: str):
-        with open(
-            f"{campaign_directory}\\campaign_data.txt", mode="r", encoding="utf-8"
-        ) as campaign_data:
-            self.events: list[str] = []
-            self.locations: list[Location] = locations_parser(campaign_data)
-            self.sosus_lines: list[SOSUS] = sosus_parser(campaign_data)
-            self.aircraft: list[Aircraft] = aircraft_parser(campaign_data)
-            self.satellites: list[Satellite] = satellite_parser(campaign_data)
-            self.special_events: dict[str, str] = {}
-            self.ai_missions: list[str] = []
-            self.player_missions: list[str] = []
-            self.ai_mission_data: dict[str, list[str]] = {}
-            self.player_mission_data: dict[str, list[str]] = {}
-            self.player_first_missions: list[str] = []
-            self.player_default_missions: list[str] = []
-            self.player_failsafe_mission: str = ""
+        self.locations: list[Location] = locations_parser(campaign_directory)
+        self.sosus_lines: list[SOSUS] = sosus_parser(campaign_directory)
+        self.aircraft: list[Aircraft] = aircraft_parser(campaign_directory)
+        self.satellites: list[Satellite] = satellite_parser(campaign_directory)
 
-            for line in campaign_data:
-                if line.startswith("PlayerMissionTypes"):
-                    self.player_mission_data["types"] = (
-                        line.strip().split("=")[1].split(",")
-                    )
+        try:
+            with open(
+                f"{campaign_directory}\\campaign_data.txt", mode="r", encoding="utf-8"
+            ) as campaign_data:
+                self.events: list[str] = []
+                self.special_events: dict[str, str] = {}
+                self.ai_missions: list[str] = []
+                self.player_missions: list[str] = []
+                self.ai_mission_data: dict[str, list[str]] = {}
+                self.player_mission_data: dict[str, list[str]] = {}
+                self.player_first_missions: list[str] = []
+                self.player_default_missions: list[str] = []
+                self.player_failsafe_mission: str = ""
 
-                if line.startswith("PlayerMissionFrequency"):
-                    self.player_mission_data["frequencies"] = (
-                        line.strip().split("=")[1].split(",")
-                    )
+                for line in campaign_data:
+                    if line.startswith("PlayerMissionTypes"):
+                        self.player_mission_data["types"] = (
+                            line.strip().split("=")[1].split(",")
+                        )
 
-                if line.startswith("PlayerMissionThreshold"):
-                    self.player_mission_data["thresholds"] = (
-                        line.strip().split("=")[1].split(",")
-                    )
+                    if line.startswith("PlayerMissionFrequency"):
+                        self.player_mission_data["frequencies"] = (
+                            line.strip().split("=")[1].split(",")
+                        )
 
-                if line.startswith("PlayerMissionCount"):
-                    self.player_mission_data["counts"] = (
-                        line.strip().split("=")[1].split(",")
-                    )
+                    if line.startswith("PlayerMissionThreshold"):
+                        self.player_mission_data["thresholds"] = (
+                            line.strip().split("=")[1].split(",")
+                        )
 
-                if line.startswith("FirstMissionTypes"):
-                    self.player_first_missions = line.strip().split("=")[1].split(",")
+                    if line.startswith("PlayerMissionCount"):
+                        self.player_mission_data["counts"] = (
+                            line.strip().split("=")[1].split(",")
+                        )
 
-                if line.startswith("DefaultMissionTypes"):
-                    self.player_default_missions = line.strip().split("=")[1].split(",")
+                    if line.startswith("FirstMissionTypes"):
+                        self.player_first_missions = (
+                            line.strip().split("=")[1].split(",")
+                        )
 
-                if line.startswith("FailsafeMissionType"):
-                    self.player_failsafe_mission = line.strip().split("=")[1]
+                    if line.startswith("DefaultMissionTypes"):
+                        self.player_default_missions = (
+                            line.strip().split("=")[1].split(",")
+                        )
 
-                if line.startswith("Non-PlayerMissionTypes"):
-                    self.ai_mission_data["types"] = (
-                        line.strip().split("=")[1].split(",")
-                    )
+                    if line.startswith("FailsafeMissionType"):
+                        self.player_failsafe_mission = line.strip().split("=")[1]
 
-                if line.startswith("Non-PlayerMissionFrequency"):
-                    self.ai_mission_data["frequencies"] = (
-                        line.strip().split("=")[1].split(",")
-                    )
+                    if line.startswith("Non-PlayerMissionTypes"):
+                        self.ai_mission_data["types"] = (
+                            line.strip().split("=")[1].split(",")
+                        )
 
-                if line.startswith("Mission="):
-                    self.player_missions.append(line.strip().split("=")[1])
+                    if line.startswith("Non-PlayerMissionFrequency"):
+                        self.ai_mission_data["frequencies"] = (
+                            line.strip().split("=")[1].split(",")
+                        )
 
-                if line.startswith("Non-PlayerMission="):
-                    self.ai_missions.append(line.strip().split("=")[1])
+                    if line.startswith("Mission="):
+                        self.player_missions.append(line.strip().split("=")[1])
 
-                if line.startswith("Event="):
-                    if len(split := line.strip().split("=")) == 3:
-                        self.special_events[split[2]] = split[1]
-                    self.events.append(line.strip().split("=")[1])
+                    if line.startswith("Non-PlayerMission="):
+                        self.ai_missions.append(line.strip().split("=")[1])
+
+                    if line.startswith("Event="):
+                        if len(split := line.strip().split("=")) == 3:
+                            self.special_events[split[2]] = split[1]
+                        self.events.append(line.strip().split("=")[1])
+
+                self.parsed = True
+        except FileNotFoundError:
+            self.parsed = False

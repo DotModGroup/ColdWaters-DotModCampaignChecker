@@ -5,6 +5,7 @@ Imports From:
     campaign_data.py
     language_info.py
     mission.py
+    summary.py
     vessel_inventory.py
 
 Classes:
@@ -15,6 +16,7 @@ from mission import Mission
 from campaign_data import CampaignData
 from vessel_inventory import VesselInventory
 from language_info import LangaugeInfo
+from summary import Summary
 
 
 class Campaign:
@@ -25,6 +27,8 @@ class Campaign:
         campaign_data: CampaignData | This stores all of the info parsed from campaign_data.txt
         vessel_inventory: VesselInventory | This stores the parsed vessel inventories and selectors
         events: Events | This stores all events in this Campaign
+        awards: Awards | This stores all Awards in  the Campaign
+        summary: Summary | This stores the campaign's parsed Summary file
 
     Methods:
         None
@@ -37,9 +41,11 @@ class Campaign:
         campaign_data: CampaignData,
         vessel_inventory: VesselInventory,
         language_info: LangaugeInfo,
+        summary: Summary,
     ):
         self.awards = awards
         self.missions = missions
         self.campaign_data = campaign_data
         self.vessel_inventory = vessel_inventory
         self.language_info = language_info
+        self.summary = summary

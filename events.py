@@ -7,13 +7,14 @@ Classes:
     Events
 """
 import os
+from typing import Union
 
 
 class Events:
     """This class stores all events from a single campaign
 
     Attributes:
-        events: list[str] = [] | List of all events as pulled from the files
+        events: dict[str, str] = [] | List of all events and NextActions as pulled from the files
 
     Methods:
         None
@@ -23,13 +24,23 @@ class Events:
         event_file_directory = (
             f"{campaign_directory}\\language_{current_language}\\events"
         )
-        self.events: list[str] = []
+        self.events: dict[str, Union[str, str]] = {}
         for event_file in os.listdir(event_file_directory):
             if (
                 event_file == "_notes.txt"
                 or os.path.isfile(f"{event_file_directory}\\{event_file}") is False
             ):
                 continue
-            self.events.append(event_file[:-4])
+            with open(event_file, encoding="utf-8") as open_event_file:
+                for line in open_event_file:
+                    if line.startswith("NextAction"):
+                        self.events[
+                            event_file.strip().removesuffix(".txt")
+                        ] = line.strip().split("=")[1]
+
         for content_file in f"{event_file_directory}\\content":
-            self.events.append(content_file[:-4])
+            self.events[content_file.strip().removesuffix(".txt")] = "content"
+            if content_file == "rpg_mode.txt":
+                with open(content_file, encoding="utf-8") as rpg_file:
+                    
+                        
