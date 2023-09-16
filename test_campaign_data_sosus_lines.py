@@ -31,6 +31,9 @@ def test_campaign_data_sosus_lines(current_campaign: Campaign) -> Report:
     """
     report = Report()
 
+    if not current_campaign.campaign_data.parsed:
+        return report
+
     for sosus_line in current_campaign.campaign_data.sosus_lines:
         # if angle_report := angle_check(sosus_line):
         #    report.warnings.append(angle_report)

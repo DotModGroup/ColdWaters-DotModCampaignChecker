@@ -28,7 +28,7 @@ def test_campaign_data_special_mission_types(current_campaign: Campaign) -> Repo
 
     # Check for existence of failsafe mission type
     if current_campaign.campaign_data.player_failsafe_mission == "":
-        report.errors.append("ERROR: No failsafe mission specified.")
+        report.warnings.append("WARNING: No failsafe mission specified.")
 
     # Verify sanity of first, default, and failsafe mission types
     for mission_type in current_campaign.campaign_data.player_first_missions:
@@ -52,6 +52,7 @@ def test_campaign_data_special_mission_types(current_campaign: Campaign) -> Repo
     if (
         current_campaign.campaign_data.player_failsafe_mission
         not in current_campaign.campaign_data.player_mission_data["types"]
+        and current_campaign.campaign_data.player_failsafe_mission
     ):
         report.errors.append(
             f"ERROR: Failsafe mission type {current_campaign.campaign_data.player_failsafe_mission} is an unrecognized mission type."

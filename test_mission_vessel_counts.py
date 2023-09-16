@@ -52,6 +52,9 @@ def test_mission_vessel_counts(current_campaign: Campaign):
                 f"WARNING: Mission {mission_name} has a maximum of {min_vessel_count} vessels."
             )
 
+        if not current_campaign.campaign_data.parsed:
+            return report
+
         if (
             min_critical_count <= 0
             and mission_name in current_campaign.campaign_data.player_missions

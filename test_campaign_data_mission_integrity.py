@@ -22,6 +22,9 @@ def test_campaign_data_mission_integrity(current_campaign: Campaign) -> Report:
     """
     report = Report()
 
+    if not current_campaign.campaign_data.parsed:
+        return report
+
     for mission_file in current_campaign.missions:
         if (
             mission_file.name not in current_campaign.campaign_data.player_missions

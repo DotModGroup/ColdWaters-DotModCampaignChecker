@@ -21,6 +21,10 @@ def test_campaign_data_mission_types(current_campaign: Campaign) -> Report:
         Report | The completed Report to be returned
     """
     report = Report()
+
+    if not current_campaign.campaign_data.parsed:
+        return report
+
     for mission_type in current_campaign.campaign_data.player_mission_data["types"]:
         if any(char.isdigit() for char in mission_type):
             report.warnings.append(

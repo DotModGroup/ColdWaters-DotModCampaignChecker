@@ -53,6 +53,7 @@ from test_campaign_data_airbase_aircraft_types import (
     test_campaign_data_airbase_aircraft_types,
 )
 from test_campaign_data_sosus_lines import test_campaign_data_sosus_lines
+from test_campaign_rpg_mode import test_campaign_rpg_mode
 
 # ----------------End Test Modules-----------------------------
 
@@ -93,6 +94,7 @@ def main():
     all_reports.append(test_campaign_data_special_mission_types(current_campaign))
     all_reports.append(test_campaign_data_airbase_aircraft_types(current_campaign))
     all_reports.append(test_campaign_data_sosus_lines(current_campaign))
+    all_reports.append(test_campaign_rpg_mode(current_campaign))
 
     write_report(all_reports)
 

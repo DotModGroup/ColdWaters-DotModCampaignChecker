@@ -21,6 +21,10 @@ def test_campaign_mission_types(current_campaign: Campaign) -> Report:
         Report | The completed Report to be returned
     """
     report = Report()
+
+    if not current_campaign.campaign_data.parsed:
+        return report
+
     for mission in current_campaign.missions:
         try:
             if (

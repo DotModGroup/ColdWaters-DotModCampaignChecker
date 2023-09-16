@@ -21,7 +21,8 @@ def test_campaign_data_airbase_aircraft_types(current_campaign: Campaign) -> Rep
         Report | The completed Report to be returned
     """
     report = Report()
-
+    if not current_campaign.campaign_data.parsed:
+        return report
     for location in current_campaign.campaign_data.locations:
         if "AIRBASE" in location.functions:
             if location.default_aircraft == []:

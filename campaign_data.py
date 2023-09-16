@@ -39,6 +39,7 @@ class CampaignData:
         ai_mission_data: dict[str, list[str]] = {}
             types: listofaimissiontypes | Stores all AI mission types
             frequencies: listofaimissionfrequencies | Stores the frequency list for AI missions
+        use_land_war: bool | Stores if we are using the land war or not.
 
     Methods:
         None

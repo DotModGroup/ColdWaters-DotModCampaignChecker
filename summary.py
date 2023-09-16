@@ -32,6 +32,9 @@ class Summary:
                 f"{campaign_directory}\\summary.txt", mode="r", encoding="utf-8"
             ) as summary_file:
                 reading_prestige = False
+                self.rpg_mode = False
+                self.prestige_values = {}
+
                 for line in summary_file:
                     if reading_prestige:
                         self.prestige_values[line.strip().split("=")[0]] = (
@@ -53,10 +56,8 @@ class Summary:
                         self.player_vessels = line.strip().split("=")[1].split(",")
                         self.autogenerate_player_vessel_list = None
 
-                    if line.startswith("RPG_MODE"):
-                        self.rpg_mode = bool(
-                            line.strip().split("=")[1].lower().capitalize()
-                        )
+                    if line.startswith("RPGMode"):
+                        self.rpg_mode = bool(line.strip().split("=")[1].capitalize())
 
                     if line.startswith("PrestigeMode"):
                         self.prestige_mode = bool(

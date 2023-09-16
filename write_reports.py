@@ -44,13 +44,15 @@ def write_report(report_list: list[Report]):
 
         # Write each level separately
         file.write("REPORTS:\n")
-        file.write("\n")
         for error in final_report.errors:
             file.write(f"{error}\n")
-        file.write("\n")
+        if final_report.errors:
+            file.write("\n")
+
         for warning in final_report.warnings:
             file.write(f"{warning}\n")
-        file.write("\n")
+        if final_report.warnings:
+            file.write("\n")
+
         for info in final_report.infos:
             file.write(f"{info}\n")
-        file.write("\n")

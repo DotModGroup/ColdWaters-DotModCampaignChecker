@@ -26,7 +26,6 @@ class Campaign:
         missions: list[Mission] | This is the list of all Missions in this Campaign
         campaign_data: CampaignData | This stores all of the info parsed from campaign_data.txt
         vessel_inventory: VesselInventory | This stores the parsed vessel inventories and selectors
-        events: Events | This stores all events in this Campaign
         awards: Awards | This stores all Awards in  the Campaign
         summary: Summary | This stores the campaign's parsed Summary file
 

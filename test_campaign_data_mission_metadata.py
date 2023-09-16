@@ -21,6 +21,10 @@ def test_campaign_data_mission_metadata(current_campaign: Campaign) -> Report:
         Report | The completed Report to be returned
     """
     report = Report()
+
+    if not current_campaign.campaign_data.parsed:
+        return report
+
     try:
         if not (
             (len(current_campaign.campaign_data.player_mission_data["types"]) - 2)
