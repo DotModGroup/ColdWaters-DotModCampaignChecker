@@ -11,7 +11,7 @@ from campaign import Campaign
 from report import Report
 
 
-def test_campaign_data_events(current_campaign: Campaign) -> Report:
+def test_campaign_data(current_campaign: Campaign) -> Report:
     """Quick test for the existence of campaign_data
 
     Parameters:

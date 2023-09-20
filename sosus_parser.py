@@ -20,51 +20,55 @@ def sosus_parser(campaign_directory: str) -> list[SOSUS]:
     Returns:
         list[Locations] | A list of parsed Locations
     """
-    with open(
-        f"{campaign_directory}\\campaign_data.txt", mode="r", encoding="utf-8"
-    ) as campaign_data:
-        sosus_list: list[SOSUS] = []
-        reading_sosus = False
-        # Done to appease MyPy
-        current_sosus: SOSUS = SOSUS()
+    try:
+        with open(
+            f"{campaign_directory}\\campaign_data.txt", mode="r", encoding="utf-8"
+        ) as campaign_data:
+            sosus_list: list[SOSUS] = []
+            reading_sosus = False
+            # Done to appease MyPy
+            current_sosus: SOSUS = SOSUS()
 
-        for line in campaign_data:
-            if line.strip() == "[SOSUS]":
-                reading_sosus = True
-                continue
-            if not reading_sosus:
-                continue
-            if line.strip() == "[PLAYER MISSIONS]":
-                reading_sosus = False
-                if current_sosus.name != "":
-                    sosus_list.append(current_sosus)
-                continue
+            for line in campaign_data:
+                if line.strip() == "[SOSUS]":
+                    reading_sosus = True
+                    continue
+                if not reading_sosus:
+                    continue
+                if line.strip() == "[PLAYER MISSIONS]":
+                    reading_sosus = False
+                    if current_sosus.name != "":
+                        sosus_list.append(current_sosus)
+                    continue
 
-            if line.strip().startswith("SOSUSName"):
-                if current_sosus.name != "":
-                    sosus_list.append(current_sosus)
-                current_sosus = SOSUS()
-                current_sosus.name = line.strip().split("=")[1]
+                if line.strip().startswith("SOSUSName"):
+                    if current_sosus.name != "":
+                        sosus_list.append(current_sosus)
+                    current_sosus = SOSUS()
+                    current_sosus.name = line.strip().split("=")[1]
 
-            if line.strip().startswith("SOSUSStartPosition"):
-                current_sosus.start_location = (
-                    float(line.split("=")[1].split(",")[0]),
-                    float(line.split("=")[1].split(",")[1]),
-                )
+                if line.strip().startswith("SOSUSStartPosition"):
+                    current_sosus.start_location = (
+                        float(line.split("=")[1].split(",")[0]),
+                        float(line.split("=")[1].split(",")[1]),
+                    )
 
-            if line.strip().startswith("SOSUSEndPosition"):
-                current_sosus.end_location = (
-                    float(line.split("=")[1].split(",")[0]),
-                    float(line.split("=")[1].split(",")[1]),
-                )
+                if line.strip().startswith("SOSUSEndPosition"):
+                    current_sosus.end_location = (
+                        float(line.split("=")[1].split(",")[0]),
+                        float(line.split("=")[1].split(",")[1]),
+                    )
 
-            if line.strip().startswith("SOSUSAngle"):
-                current_sosus.angle = int(line.strip().split("=")[1])
+                if line.strip().startswith("SOSUSAngle"):
+                    current_sosus.angle = int(line.strip().split("=")[1])
 
-            if line.strip().startswith("SOSUSDetectionRange"):
-                current_sosus.detection_range = int(line.strip().split("=")[1])
+                if line.strip().startswith("SOSUSDetectionRange"):
+                    current_sosus.detection_range = int(line.strip().split("=")[1])
 
-            if line.strip().startswith("SOSUSAlignment"):
-                current_sosus.alignment = line.strip().split("=")[1]
+                if line.strip().startswith("SOSUSAlignment"):
+                    current_sosus.alignment = line.strip().split("=")[1]
 
-        return sosus_list
+            return sosus_list
+
+    except FileNotFoundError:
+        return []

@@ -1,22 +1,6 @@
 # ColdWaters-DotModCampaignChecker
 This project is designed to automatically check a DotMod campaign for issues to find bugs before campaigns even go live.
-This is a "static checker" (like MyPy for Python) and is designed to be run cold on any campaign.
-
-## Current Checks:
-- All vessel arrays in campaign missions are the same length
-- Maximum and minimum vessles in missions, as well as critical vessels
-- Player and AI mission metadata, including frequency sums
-- Vessels provided in mission files exist in vessel_inventory
-- All events provided for in campaign_data and in mission files exist
-- All critical events (such as campaign loss and start events) exist
-- All missions' names match the type of mission said mission is
-- All missions match a type specified in campaign_data
-- All missions specified in campaign_data have a file
-- All missions in the campaign are specified in campaign_data
-- All missions have associated language files
-- All mission types are only constructed of letters and not numbers
-- All missions are properly 0-indexed
-- All awards in awards.txt are present in event file form
+This is a "static checker" (like MyPy for Python) and is designed to be run cold on any campaign. It does not claim to catch every issue, but common ones like missing files or incorrectly adjusting elements of campaign_data should be caught with an error message more descriptive than that which the game gives you.
 
 ## Changelog
 - v0.01: First three checks
@@ -29,13 +13,14 @@ This is a "static checker" (like MyPy for Python) and is designed to be run cold
 - v0.1.1: Added small tweaks regarding the use of testship to indicate a location-based mission
 - v0.1.2: Added two new checks regarding mission types
 - v0.1.3: Added one new check for award event names
+- v1.0.0b: Added a large number of new checks for locations, aircraft, more error handling
 
 ### How to Use
 1. Download the latest release from the "Releases" tab on Discord. This should be a .zip containing the .exe itself.
 2. Extract the .exe from the downloaded .zip to dotmod, override, or priority, in whichever one your campaign sits.
 3. Run the .exe by double-clicking on it.
 4. Enter just the numeral part of the campaign's number (006 would be just 6), and then enter a two letter langauge code, such as en or ru.
-5. Wait for the program to finish (this should never take longer than a second) and open reports.txt.
+5. Wait for the program to finish (this should never take longer than just a few seconds) and open reports.txt.
 6. Perform corrections on campaign based on reports.
 
 ### How to Contribute

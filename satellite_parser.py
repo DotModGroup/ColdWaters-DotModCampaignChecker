@@ -23,34 +23,38 @@ def satellite_parser(campaign_directory: str) -> list[Satellite]:
     reading_satellites = False
     # Done to appease MyPy
     current_satellite: Satellite = Satellite()
-    with open(
-        f"{campaign_directory}\\campaign_data.txt", mode="r", encoding="utf-8"
-    ) as campaign_data:
-        for line in campaign_data:
-            if line.strip() == "[Satellites]":
-                reading_satellites = True
-                continue
-            if not reading_satellites:
-                continue
-            if line.strip() == "[Locations]":
-                reading_satellites = False
-                if current_satellite.name != "":
-                    aircraft_list.append(current_satellite)
-                continue
+    try:
+        with open(
+            f"{campaign_directory}\\campaign_data.txt", mode="r", encoding="utf-8"
+        ) as campaign_data:
+            for line in campaign_data:
+                if line.strip() == "[Satellites]":
+                    reading_satellites = True
+                    continue
+                if not reading_satellites:
+                    continue
+                if line.strip() == "[Locations]":
+                    reading_satellites = False
+                    if current_satellite.name != "":
+                        aircraft_list.append(current_satellite)
+                    continue
 
-            if line.strip().startswith("SatelliteName"):
-                if current_satellite.name != "":
-                    aircraft_list.append(current_satellite)
-                current_satellite = Satellite()
-                current_satellite.name = line.strip().split("=")[1]
+                if line.strip().startswith("SatelliteName"):
+                    if current_satellite.name != "":
+                        aircraft_list.append(current_satellite)
+                    current_satellite = Satellite()
+                    current_satellite.name = line.strip().split("=")[1]
 
-            if line.strip().startswith("SatelliteFaction"):
-                current_satellite.faction = line.strip().split("=")[1]
+                if line.strip().startswith("SatelliteFaction"):
+                    current_satellite.faction = line.strip().split("=")[1]
 
-            if line.strip().startswith("SatelliteSpeed"):
-                current_satellite.satellite_speed = int(line.strip().split("=")[1])
+                if line.strip().startswith("SatelliteSpeed"):
+                    current_satellite.satellite_speed = int(line.strip().split("=")[1])
 
-            if line.strip().startswith("SatelliteDetectionRange"):
-                current_satellite.detection_range = int(line.strip().split("=")[1])
+                if line.strip().startswith("SatelliteDetectionRange"):
+                    current_satellite.detection_range = int(line.strip().split("=")[1])
 
-        return aircraft_list
+            return aircraft_list
+
+    except FileNotFoundError:
+        return []

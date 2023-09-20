@@ -20,6 +20,7 @@ from missions_parser import mission_parser
 from vessel_inventory import VesselInventory
 from language_info import LangaugeInfo
 from summary import Summary
+from waypoints import Waypoints
 
 
 # This file will run each parser and collect the data
@@ -40,6 +41,13 @@ def campaign_parser(campaign_directory: str, current_language: str) -> Campaign:
     vessel_inventory: VesselInventory = VesselInventory(campaign_directory)
     language_info: LangaugeInfo = LangaugeInfo(campaign_directory, current_language)
     summary: Summary = Summary(campaign_directory)
+    waypoints: Waypoints = Waypoints(campaign_directory)
     return Campaign(
-        awards, mission_list, campaign_data, vessel_inventory, language_info, summary
+        awards,
+        mission_list,
+        campaign_data,
+        vessel_inventory,
+        language_info,
+        summary,
+        waypoints,
     )

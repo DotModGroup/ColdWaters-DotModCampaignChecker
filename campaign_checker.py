@@ -31,6 +31,7 @@ from report import Report
 from write_reports import write_report
 
 # ----------------Test Modules Here----------------------------
+from test_campaign_data import test_campaign_data
 from test_award_event_files import test_award_event_files
 from test_campaign_data_mission_metadata import test_campaign_data_mission_metadata
 from test_mission_vessel_arrays import test_mission_vessel_arrays
@@ -54,6 +55,8 @@ from test_campaign_data_airbase_aircraft_types import (
 )
 from test_campaign_data_sosus_lines import test_campaign_data_sosus_lines
 from test_campaign_rpg_mode import test_campaign_rpg_mode
+from test_campaign_data_locations import test_campaign_data_locations
+from test_waypoint_network_integrity import test_waypoint_network_integrity
 
 # ----------------End Test Modules-----------------------------
 
@@ -79,6 +82,7 @@ def main():
 
     current_campaign = campaign_parser(campaign_directory, current_language)
 
+    all_reports.append(test_campaign_data(current_campaign))
     all_reports.append(test_award_event_files(current_campaign))
     all_reports.append(test_campaign_data_mission_metadata(current_campaign))
     all_reports.append(test_campaign_data_mission_integrity(current_campaign))
@@ -95,6 +99,8 @@ def main():
     all_reports.append(test_campaign_data_airbase_aircraft_types(current_campaign))
     all_reports.append(test_campaign_data_sosus_lines(current_campaign))
     all_reports.append(test_campaign_rpg_mode(current_campaign))
+    all_reports.append(test_campaign_data_locations(current_campaign))
+    all_reports.append(test_waypoint_network_integrity(current_campaign))
 
     write_report(all_reports)
 

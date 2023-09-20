@@ -17,6 +17,7 @@ from campaign_data import CampaignData
 from vessel_inventory import VesselInventory
 from language_info import LangaugeInfo
 from summary import Summary
+from waypoints import Waypoints
 
 
 class Campaign:
@@ -26,8 +27,9 @@ class Campaign:
         missions: list[Mission] | This is the list of all Missions in this Campaign
         campaign_data: CampaignData | This stores all of the info parsed from campaign_data.txt
         vessel_inventory: VesselInventory | This stores the parsed vessel inventories and selectors
-        awards: Awards | This stores all Awards in  the Campaign
+        awards: Awards | This stores all Awards in the Campaign
         summary: Summary | This stores the campaign's parsed Summary file
+        waypoints: Waypoints | This stores all of the campaign's land and sea waypoints
 
     Methods:
         None
@@ -41,6 +43,7 @@ class Campaign:
         vessel_inventory: VesselInventory,
         language_info: LangaugeInfo,
         summary: Summary,
+        waypoints: Waypoints,
     ):
         self.awards = awards
         self.missions = missions
@@ -48,3 +51,4 @@ class Campaign:
         self.vessel_inventory = vessel_inventory
         self.language_info = language_info
         self.summary = summary
+        self.waypoints = waypoints

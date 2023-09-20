@@ -22,25 +22,25 @@ def test_mission_language_files(current_campaign: Campaign) -> Report:
     """
 
     report = Report()
+    if current_campaign.campaign_data.parsed:
+        for player_mission in current_campaign.campaign_data.player_missions:
+            if (
+                player_mission
+                not in current_campaign.language_info.mission_language_files.language_files
+            ):
+                report.errors.append(
+                    f"ERROR: Mission {player_mission} lacks a language file."
+                )
 
-    for player_mission in current_campaign.campaign_data.player_missions:
-        if (
-            player_mission
-            not in current_campaign.language_info.mission_language_files.language_files
-        ):
-            report.errors.append(
-                f"ERROR: Mission {player_mission} lacks a language file."
-            )
-
-    for (
-        language_file
-    ) in current_campaign.language_info.mission_language_files.language_files:
-        for mission in current_campaign.missions:
-            if language_file == mission.name:
-                break
-        else:
-            report.infos.append(
-                f"INFO: Language file {language_file}.txt has no mission."
-            )
+        for (
+            language_file
+        ) in current_campaign.language_info.mission_language_files.language_files:
+            for mission in current_campaign.missions:
+                if language_file == mission.name:
+                    break
+            else:
+                report.infos.append(
+                    f"INFO: Language file {language_file}.txt has no mission."
+                )
 
     return report
