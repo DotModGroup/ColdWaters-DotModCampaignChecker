@@ -40,7 +40,8 @@ def test_campaign_data_locations(current_campaign: Campaign) -> Report:
                     if "INSERTION" not in location.mission_types:
                         report.errors.append(
                             "ERROR: INSERTION mission type defined but player base location ID "
-                            f"{location.location_id} does not specify INSERTION as a valid MissionType."
+                            f"{location.location_id} does not specify "
+                            "INSERTION as a valid MissionType."
                         )
 
                 if (
@@ -59,8 +60,9 @@ def test_campaign_data_locations(current_campaign: Campaign) -> Report:
                     mission.name for mission in current_campaign.missions
                 ]:
                     report.errors.append(
-                        f"ERROR: Location ID {location.location_id} specified as LAND_STRIKE_TARGET "
-                        "but mission file LAND_STRIKE_LOCATION_{location.location_id} not found."
+                        f"ERROR: Location ID {location.location_id} specified as "
+                        "LAND_STRIKE_TARGET but mission file LAND_STRIKE_LOCATION_"
+                        f"{location.location_id} not found."
                     )
 
             if "INSERTION_TARGET" in location.functions:

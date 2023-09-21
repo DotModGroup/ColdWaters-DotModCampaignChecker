@@ -57,6 +57,7 @@ from test_campaign_data_sosus_lines import test_campaign_data_sosus_lines
 from test_campaign_rpg_mode import test_campaign_rpg_mode
 from test_campaign_data_locations import test_campaign_data_locations
 from test_waypoint_network_integrity import test_waypoint_network_integrity
+from test_locations_language_info import test_locations_language_info
 
 # ----------------End Test Modules-----------------------------
 
@@ -101,6 +102,7 @@ def main():
     all_reports.append(test_campaign_rpg_mode(current_campaign))
     all_reports.append(test_campaign_data_locations(current_campaign))
     all_reports.append(test_waypoint_network_integrity(current_campaign))
+    all_reports.append(test_locations_language_info(current_campaign))
 
     write_report(all_reports)
 
