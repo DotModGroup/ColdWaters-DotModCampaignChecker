@@ -2,24 +2,29 @@
 
 Imports From:
     os
+    
     campaigns_parser.py
     report.py
+    test_campaign_data.py
     test_award_event_files.py
-    test_campaign_data_events.py
-    test_campaign_data_airbase_aircraft_types.py
-    test_campaign_data_mission_integrity.py
     test_campaign_data_mission_metadata.py
-    test_campaign_data_mission_types.py
-    test_campaign_data_sosus_lines.py
-    test_campaign_data_special_mission_types
-    test_campaign_mission_index.py
-    test_campaign_mission_types.py
     test_mission_vessel_arrays.py
     test_mission_vessel_counts.py
     test_mission_vessel_inventory_integrity.py
-    test_mission_events.py
+    test_campaign_data_events.py
+    test_mission_events import test_mission_events.py
+    test_campaign_mission_types.py
+    test_campaign_data_mission_integrity.py
     test_mission_language_files.py
-    write_reports.py
+    test_campaign_mission_index.py
+    test_campaign_data_mission_types.py
+    test_campaign_data_special_mission_types.py
+    test_campaign_data_airbase_aircraft_types.py
+    test_campaign_data_sosus_lines.py
+    test_campaign_rpg_mode.py
+    test_campaign_data_locations.py
+    test_waypoint_network_integrity.py
+    test_locations_language_info.py
 
 Functions:
     main()
